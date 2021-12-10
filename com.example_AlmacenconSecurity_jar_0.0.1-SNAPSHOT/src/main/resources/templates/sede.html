@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla::head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container" th:replace="layout/plantilla::menu"></div>
+        <div class="container" style="margin-top: 40px; max-width:max-content">
+            <table class="table table-striped" style="max-width: 600px ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Distrito</th>
+                        <th scope="col">Dirección</th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col" colspan="2">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sed :${sedes}">
+                        <th scope="row" th:text="${sed.idalmacensede}"></th>
+                        <td th:text="${sed.distrito}"></td>
+                        <td th:text="${sed.direccion}"></td>
+                        <td>
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" href="#" class="text-success" th:href="@{'/editSede/' + ${sed.idalmacensede}}"><i class="far fa-edit"></i></a>
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" href="#" class="text-danger" th:href="@{'/delSede/' + ${sed.idalmacensede}}"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

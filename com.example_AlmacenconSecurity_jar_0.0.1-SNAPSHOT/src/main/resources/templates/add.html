@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      >
+    <head th:replace="layout/plantilla::head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container" th:replace="layout/plantilla::menu"></div>
+        <div class="container" style="max-width: 450px; margin-top: 15px">
+            <div class="card">
+                <div class="card-header">
+                    Registrar Producto
+                </div>
+                <div class="card-body">
+                    <form action="/add">
+                        <div class="mb-3">
+                            <select name="idtip" id="tip" class="form-control">
+                                <option value="0">Seleccionar Tipo</option>                                
+                                <option th:each="tip: ${tips}" th:value="${tip.idtipo}" th:text="${tip.nomTip}" th:selected="false"></option>                               
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select name="idsec" id="sect" class="form-control">
+                                <option value="0">Seleccionar Sector</option>                                
+                                <option th:each="sect: ${sects}" th:value="${sect.idsector}" th:text="${sect.nomSec}" th:selected="false"></option>                              
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select name="idalm" id="alma" class="form-control">
+                                <option value="0">Seleccionar Sede de Almacen</option>                                
+                                <option th:each="alma: ${almas}" th:value="${alma.idalmacensede}" th:text="${alma.distrito}" th:selected="false"></option>                              
+                            </select>
+                        </div>    
+                        <div class="mb-3">
+                            <select name="idprov" id="prov" class="form-control">
+                                <option value="0">Seleccionar Proveedor</option>                                
+                                <option th:each="prov: ${provs}" th:value="${prov.idproveedor}" th:text="${prov.nombre}" th:selected="false"></option>                              
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="nombre" placeholder="Nombres">        
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="precio" placeholder="Precio">        
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="stock" placeholder="Stock">        
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="fecha" placeholder="Fecha">        
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Guardar">
+                    </form>
+                </div>
+            </div>
+    </body>
+</html>
+
+

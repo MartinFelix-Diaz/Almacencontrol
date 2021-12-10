@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      >
+    <head th:replace="layout/plantilla::head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+    <body>
+        <div class="container" th:replace="layout/plantilla::menu"></div>
+        <div class="container" style="max-width: 450px; margin-top: 15px">
+            <div class="card">
+                <div class="card-header">
+                    Registrar Proveedor 
+                </div>
+                <div class="card-body">
+                    <form action="/addProv">
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="nombre" placeholder="Nombre">        
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="apellido" placeholder="Apellido">         
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="telefono" placeholder="Telefono">        
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" name="dni" placeholder="DNI">         
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Guardar">
+                    </form>
+                </div>
+            </div>
+    </body>
+</html>

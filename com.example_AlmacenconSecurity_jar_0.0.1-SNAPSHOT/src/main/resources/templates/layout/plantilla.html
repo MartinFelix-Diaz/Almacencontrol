@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>Almacen</title>
+        <meta charset="UTF-8"></meta>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/udm/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <div th:fragment="menu">
+            <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+                
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">Almacen</a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/prods">Producto</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Sedes
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/sedes">Administrar Sedes</a>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item" href="/createSedes">Agregar Sedes</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/provs">Proveedores</a>
+                            </li>
+                        </ul>
+                        <!--El boton realizara la accion de logout con el evento onclick-->
+                        <form method="POST" th:action="@{/logout}">
+                            <button class="btn btn-outline-light" onclick="this.parentNode.submit();">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <header th:fragment="header">
+            <h1 th:text="#{plantilla.titulo}">Titulo</h1>
+        </header>
+    </body>
+</html>
